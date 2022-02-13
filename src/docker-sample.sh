@@ -1,1 +1,1 @@
-docker run --rm -v "~/downloads:/opt/downloads" new_recorder -u https://vc.sharif.edu/ch/abtahi -d 1 -n  -a ضابط
+docker run --rm -v "~/downloads:/opt/downloads" --name recorder-test new-recorder -u https://vc.sharif.edu/ch/abtahi -d 1 -n test-class -a ضابط
