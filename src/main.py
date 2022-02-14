@@ -63,13 +63,13 @@ def click_on_point(x, y):
 
 
 def start_recording_with_screen_recorder(driver):
-    time.sleep(10)
+    time.sleep(0.5)
     # click_on_image(os.path.join(SOURCE_DIR, "Icons/Extensions.png")) # click to see the extensions pop up
-    click_on_point(1800, 80)
-    time.sleep(10)
+    click_on_point(1800, 50)
+    time.sleep(0.5)
     # click_on_image(os.path.join(SOURCE_DIR, "Icons/screen_recorder_old.png")) # click screen recorder from extensions pop up
-    click_on_point(1550, 235)
-    time.sleep(10)
+    click_on_point(1550, 205)
+    time.sleep(0.5)
 
     driver.switch_to.window(driver.window_handles[1])
     driver.maximize_window()
@@ -81,11 +81,11 @@ def start_recording_with_screen_recorder(driver):
     driver.find_element_by_xpath('//*[@id="root"]/div[4]/div[4]/button').click()
     time.sleep(0.5)
 
-    click_on_point(1200, 160)
+    click_on_point(1200, 90)
     time.sleep(0.2)
-    click_on_point(1000, 250)
+    click_on_point(800, 150)
     time.sleep(0.2)
-    click_on_point(1250, 600)
+    click_on_point(1200, 460)
     time.sleep(0.2)
 
 
@@ -183,7 +183,7 @@ def login(driver, args):
 
 
 def stop_recordering(driver):
-    click_on_point(440, 170)
+    driver.find_element_by_xpath('//*[@id="root"]/div[4]/div[4]/button[1]').click()
     time.sleep(0.3)
     driver.find_element_by_xpath('//*[@id="root"]/div[4]/div[2]/div/div[1]/button').click()
     time.sleep(0.3)
@@ -213,8 +213,12 @@ def record_video(args):
     try_catch(start_recording_with_screen_recorder, (driver, ))
 
     logger.info('recorder is started, watching for freeze detection!')
-    # end_time = datetime.now() + timedelta(minutes=args.duration)
-    end_time = datetime.now() + timedelta(seconds=20)
+
+    if args.debug:
+        end_time = datetime.now() + timedelta(seconds=60)
+    else:
+        end_time = datetime.now() + timedelta(minutes=args.duration)
+
     old_screenshot = cv2.imdecode(np.frombuffer(
         driver.get_screenshot_as_png(), np.uint8), -1)
     next_failure_test = datetime.now() + FAILURE_TEST_INTERVAL
