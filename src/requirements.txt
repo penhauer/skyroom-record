@@ -5,3 +5,5 @@ selenium==3.141.0
 xvfbwrapper==0.2.9
 ffmpeg-python==0.2.0
 Flask==1.1.2
+python-crontab==2.6.0
+croniter==1.2.0

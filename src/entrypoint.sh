@@ -1,5 +1,7 @@
 #!/bin/bash
 
-./run_xvfb.sh
+Xvfb :99 -screen 0 1920x1080x24 &
 
-python3 main.py "$@"
+touch ~/.Xauthority
+
+flask run -h 0.0.0.0 -p 5000

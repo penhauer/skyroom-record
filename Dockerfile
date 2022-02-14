@@ -15,7 +15,6 @@ RUN mkdir -p /opt/downloads
 
 COPY src/ .
 
-RUN chmod +x run_xvfb.sh
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT [ "./entrypoint.sh" ]

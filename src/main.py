@@ -108,7 +108,8 @@ def configure_parser():
                         help='Video to encode')
     parser.add_argument('--debug', help="enable debug mode", 
                         action='store_true')
-    return parser
+    args = parser.parse_args()
+    return args
 
 
 def start_driver(download_path):
@@ -278,8 +279,7 @@ def record_video(args):
     output_mp4 = os.path.join(download_path, 'video.mp4')
 
 def main():
-    parser = configure_parser()
-    args = parser.parse_args()
+    args = configure_parser()
 
     if args.url != '' and args.video != '':
         print('You cant define the -v argument for recording')

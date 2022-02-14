@@ -1,0 +1,4 @@
+* * * * * echo "is working" >> test-log.txt
+*/5 * * * * python3 main.py -u https://vc.sharif.edu/ch/ssc-2 -d 3 -n ssc -a ضابط
+*/7 * * * * python3 main.py -u https://vc.sharif.edu/ch/ssc-2 -d 2 -n ssc -a یککک
+

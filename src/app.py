@@ -2,6 +2,14 @@ import pyautogui
 
 from datetime import datetime
 from flask import Flask, send_file, render_template, request
+from flask import jsonify, abort
+import crontab
+import threading
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 app = Flask(__name__)
@@ -42,3 +50,14 @@ def stop_recording():
     with open('./force-stop-recording', 'w') as f:
         f.write('1')
     return 'ok'
+
+
+def run_crons():
+    tab = crontab.CronTab(tabfile='cron-tabs.tab')
+    logging.info("starting cron scheduler")
+    for result in tab.run_scheduler():
+        logging.info("starting task ============================================")
+        logging.info(result)
+
+
+threading.Thread(target=run_crons).start()
