@@ -23,6 +23,10 @@ for recording classes with cron, edit cron-tabs.tab and run
 ```bash
 bash run.sh
 ```
+make sure to run run.sh everytime you edit your crons. Also remember to remove the old container running old cron before starting a new container by 
+```bash
+docker container rm --force recorder
+```
 
 Notes:
  - VCLASS_URL must be the url of class with `https://`.
