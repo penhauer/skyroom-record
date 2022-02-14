@@ -15,7 +15,7 @@ docker build --tag skyroom-recorder:latest .
 
 for recording only one class run
 ```bash
-docker run --rm --volume "$(pwd)/downloads:/opt/downloads" --name recorder skyroom-recorder -u VLASS_URL -d CLASS_DURATION -n test-class -e encoding
+docker run --rm --volume "$(pwd)/downloads:/opt/downloads" --name recorder skyroom-recorder --single -u VLASS_URL -d CLASS_DURATION -n test-class -e encoding
 ```
 
 for recording classes with cron, edit cron-tabs.tab and run
